@@ -24,4 +24,12 @@ public protocol CascadeAnimationParameters {
     var backgroundColor: UIColor { get set }
     /// Corner radius of the viewControllers.
     var cornerRadius: CGFloat { get set }
+    
+    var viewTag: Int { get }
+}
+
+extension CascadeAnimationParameters {
+    var viewTag: Int {
+        return 101
+    }
 }

@@ -10,11 +10,18 @@ import Foundation
 
 /// Default Animation Parameters
 struct CascadeDefaultAnimationPrameters: CascadeAnimationParameters {
-    public var animationDuration: TimeInterval = 0.1
-    public var presentingVCAlpha: CGFloat = 0
-    public var presentingTopMargin: CGFloat = 0
-    public var presentedTopMargin: CGFloat  = 0
-    public var scale: CGFloat = 0
-    public var backgroundColor: UIColor = UIColor.black
-    public var cornerRadius: CGFloat = 0
+    /// = 0.5
+    var animationDuration: TimeInterval = 0.5
+    /// = 0.7
+    var presentingVCAlpha: CGFloat = 0.7
+    /// = 20.0
+    var presentingTopMargin: CGFloat = 20
+    /// = 40.0
+    var presentedTopMargin: CGFloat  = 40
+    /// = 0.9
+    var scale: CGFloat = 0.9
+    /// = .black
+    var backgroundColor: UIColor = UIColor.black
+    /// = 0
+    var cornerRadius: CGFloat = 0
 }
