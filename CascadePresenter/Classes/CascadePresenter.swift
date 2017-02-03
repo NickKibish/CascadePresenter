@@ -24,6 +24,7 @@ extension CascadePresenter: UIViewControllerAnimatedTransitioning {
             let toVC = transitionContext.viewController(forKey: .to),
             let toSnapshot = toVC.view.snapshotView(afterScreenUpdates: true),
             let fromSnapshot = fromVC.view.snapshotView(afterScreenUpdates: true) else {
+                transitionContext.completeTransition(false)
                 return
         }
         
@@ -37,7 +38,9 @@ extension CascadePresenter: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(toVC.view)
         containerView.addSubview(toSnapshot)
         
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { 
+        toVC.view.isHidden = true 
+        
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             toSnapshot.frame = self.finalFrame
             fromVC.view.transform = CGAffineTransform(scaleX: self.parameters.scale, y: self.parameters.scale)
             fromVC.view.alpha = self.parameters.presentingVCAlpha
@@ -60,7 +63,7 @@ extension CascadePresenter {
     fileprivate var initialFrame: CGRect {
         var frame = UIScreen.main.bounds
         frame.size.height -= parameters.presentedTopMargin
-        frame.origin.y = parameters.presentedTopMargin
+        frame.origin.y = frame.height
         return frame
     }
     
