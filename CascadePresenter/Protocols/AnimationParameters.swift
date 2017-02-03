@@ -6,10 +6,10 @@
 //
 //
 
-import UIKit
+import Foundation
 
 /// Protocol provides parametes of prestetion or dismission animation
-public protocol AnimationParameters {
+public protocol CascadeAnimationParameters {
     /// Duration of animation.
     var animationDuration: TimeInterval { get set }
     /// Alpha of presenting view controller.
