@@ -1,14 +1,14 @@
 use_frameworks!
 
 target 'CascadePresenter_Example' do
-  pod 'CascadePresenter', :path => '../'
+	pod 'CascadePresenter', :path => '../'
 
-  target 'CascadePresenter_Tests' do
-    inherit! :search_paths
+	target 'CascadePresenter_Tests' do
+		inherit! :search_paths
 
-    pod 'Quick', '~> 1.0.0'
-  pod 'Nimble', '~> 5.1.1'
-  pod 'FBSnapshotTestCase'
-  pod 'Nimble-Snapshots'
-  end
+		pod 'Quick'#, '~> 1.0.0'
+		pod 'Nimble'#, '~> 5.1.1'
+		pod 'FBSnapshotTestCase'
+		pod 'Nimble-Snapshots'
+	end
 end
