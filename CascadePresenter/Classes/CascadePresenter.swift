@@ -19,6 +19,7 @@ class CascadePresenter: CascadeAbstractAnimator {
         }
         
         let containerView = transitionContext.containerView
+        containerView.backgroundColor = parameters.backgroundColor
         
         toSnapshot.frame = self.initialFrame
         
