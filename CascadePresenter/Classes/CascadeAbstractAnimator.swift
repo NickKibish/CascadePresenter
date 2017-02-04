@@ -8,17 +8,17 @@
 
 import UIKit
 
-open class CascadeAbstractAnimator: NSObject {
+class CascadeAbstractAnimator: NSObject {
     /// Animation parameters. Default values are equal to `CascadeDefaultAnimationPrameters`
-    public var parameters: CascadeAnimationParameters = CascadeDefaultAnimationPrameters()
+    var parameters: CascadeAnimationParameters = CascadeDefaultAnimationPrameters()
 }
 
 extension CascadeAbstractAnimator: UIViewControllerAnimatedTransitioning {
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return parameters.animationDuration
     }
     
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         transitionContext.completeTransition(true)
     }
 }

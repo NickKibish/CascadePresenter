@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class CascadePresenter: CascadeAbstractAnimator {
-    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+class CascadePresenter: CascadeAbstractAnimator {
+    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let toSnapshot = toVC.view.snapshotView(afterScreenUpdates: true),
@@ -19,6 +19,7 @@ open class CascadePresenter: CascadeAbstractAnimator {
         }
         
         let containerView = transitionContext.containerView
+        containerView.backgroundColor = parameters.backgroundColor
         
         toSnapshot.frame = self.initialFrame
         
