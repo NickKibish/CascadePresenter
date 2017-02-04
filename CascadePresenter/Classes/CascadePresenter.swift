@@ -34,12 +34,11 @@ open class CascadePresenter: CascadeAbstractAnimator {
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             toSnapshot.frame = self.finalFrame
-            toSnapshot.layer.cornerRadius = self.parameters.cornerRadius
+            toSnapshot.round(corners: [.topLeft, .topRight], radius: self.parameters.cornerRadius)
             
             fromVC.view.transform = CGAffineTransform(scaleX: self.parameters.scale, y: self.parameters.scale)
             fromVC.view.alpha = self.parameters.presentingVCAlpha
             fromVC.view.layer.cornerRadius = self.parameters.cornerRadius
-            fromVC.view.round(corners: [.topLeft, .topRight], radius: self.parameters.cornerRadius)
             self.updateFromVCFrame(from: fromVC.view)
         }) { (completed) in
             containerView.insertSubview(fromSnapshot, at: 0)
@@ -57,7 +56,7 @@ extension CascadePresenter {
     fileprivate var initialFrame: CGRect {
         var frame = UIScreen.main.bounds
         frame.size.height -= parameters.presentedTopMargin
-        frame.origin.y = frame.height
+        frame.origin.y = UIScreen.main.bounds.height
         return frame
     }
     

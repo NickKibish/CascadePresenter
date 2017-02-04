@@ -39,14 +39,18 @@ open class CascadeDismisser: CascadeAbstractAnimator {
         toVC.view.alpha = 1
         toVC.view.transform = CGAffineTransform(scaleX: 1, y: 1)
         toVC.view.isHidden = true
+        toVC.view.round(corners: [.topLeft, .topRight], radius: 0)
+        toVC.view.layer.cornerRadius = 0
         
         var finishedFrame = fromSnapshot.frame
-        finishedFrame.origin.y = finishedFrame.height
+        finishedFrame.origin.y = UIScreen.main.bounds.height
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { 
             fromSnapshot.frame = finishedFrame
             toSnapshot.alpha = 1
             toSnapshot.transform = CGAffineTransform(scaleX: 1, y: 1)
+            toSnapshot.frame = UIScreen.main.bounds
+            toSnapshot.round(corners: [.topLeft, .topRight], radius: 0)
         }) { (completed) in
             fromSnapshot.removeFromSuperview()
             toSnapshot.removeFromSuperview()
