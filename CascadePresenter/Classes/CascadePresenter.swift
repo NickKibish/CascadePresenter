@@ -44,7 +44,7 @@ extension CascadePresenter: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(toSnapshot)
         
         toVC.view.frame = self.finalFrame
-        toVC.view.layer.cornerRadius = self.parameters.cornerRadius
+        toVC.view.round(corners: [.topLeft, .topRight], radius: parameters.cornerRadius)
         toVC.view.isHidden = true
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
@@ -54,6 +54,7 @@ extension CascadePresenter: UIViewControllerAnimatedTransitioning {
             fromVC.view.transform = CGAffineTransform(scaleX: self.parameters.scale, y: self.parameters.scale)
             fromVC.view.alpha = self.parameters.presentingVCAlpha
             fromVC.view.layer.cornerRadius = self.parameters.cornerRadius
+            fromVC.view.round(corners: [.topLeft, .topRight], radius: self.parameters.cornerRadius)
             self.updateFromVCFrame(from: fromVC.view)
         }) { (completed) in
             containerView.insertSubview(fromSnapshot, at: 0)
