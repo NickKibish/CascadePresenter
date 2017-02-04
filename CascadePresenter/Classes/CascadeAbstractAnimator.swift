@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CascadeAbstractAnimator: NSObject {
+open class CascadeAbstractAnimator: NSObject {
     /// Animation parameters. Default values are equal to `CascadeDefaultAnimationPrameters`
     public var parameters: CascadeAnimationParameters = CascadeDefaultAnimationPrameters()
 }

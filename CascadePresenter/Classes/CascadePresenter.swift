@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CascadePresenter: CascadeAbstractAnimator {
+open class CascadePresenter: CascadeAbstractAnimator {
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
@@ -22,12 +22,7 @@ class CascadePresenter: CascadeAbstractAnimator {
         
         toSnapshot.frame = self.initialFrame
         
-        fromSnapshot.transform = CGAffineTransform(scaleX: parameters.scale, y: parameters.scale)
-        fromSnapshot.alpha = parameters.presentingVCAlpha
-        fromSnapshot.layer.cornerRadius = parameters.cornerRadius
-        fromSnapshot.layer.masksToBounds = true
-        fromSnapshot.tag = parameters.viewTag
-        
+        setupFromSnapshot(fromSnapshot: fromSnapshot)
         updateFromVCFrame(from: fromSnapshot)
         
         containerView.addSubview(toVC.view)
@@ -76,5 +71,13 @@ extension CascadePresenter {
         var frame = from.frame
         frame.origin.y = parameters.presentingTopMargin
         from.frame = frame
+    }
+    
+    fileprivate func setupFromSnapshot(fromSnapshot: UIView) {
+        fromSnapshot.transform = CGAffineTransform(scaleX: parameters.scale, y: parameters.scale)
+        fromSnapshot.alpha = parameters.presentingVCAlpha
+        fromSnapshot.layer.cornerRadius = parameters.cornerRadius
+        fromSnapshot.layer.masksToBounds = true
+        fromSnapshot.tag = parameters.viewTag
     }
 }
