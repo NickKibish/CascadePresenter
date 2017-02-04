@@ -34,23 +34,31 @@ extension CascadePresenter: UIViewControllerAnimatedTransitioning {
         
         fromSnapshot.transform = CGAffineTransform(scaleX: parameters.scale, y: parameters.scale)
         fromSnapshot.alpha = parameters.presentingVCAlpha
+        fromSnapshot.layer.cornerRadius = parameters.cornerRadius
+        fromSnapshot.layer.masksToBounds = true
+        fromSnapshot.tag = parameters.viewTag
+        
+        updateFromVCFrame(from: fromSnapshot)
         
         containerView.addSubview(toVC.view)
         containerView.addSubview(toSnapshot)
         
-        toVC.view.isHidden = true 
+        toVC.view.frame = self.finalFrame
+        toVC.view.layer.cornerRadius = self.parameters.cornerRadius
+        toVC.view.isHidden = true
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             toSnapshot.frame = self.finalFrame
+            toSnapshot.layer.cornerRadius = self.parameters.cornerRadius
+            
             fromVC.view.transform = CGAffineTransform(scaleX: self.parameters.scale, y: self.parameters.scale)
             fromVC.view.alpha = self.parameters.presentingVCAlpha
+            fromVC.view.layer.cornerRadius = self.parameters.cornerRadius
+            self.updateFromVCFrame(from: fromVC.view)
         }) { (completed) in
-            fromSnapshot.tag = self.parameters.viewTag
-            
             containerView.insertSubview(fromSnapshot, at: 0)
             toSnapshot.removeFromSuperview()
             
-            toVC.view.frame = self.finalFrame
             toVC.view.isHidden = false
             
             transitionContext.completeTransition(completed)
@@ -71,5 +79,11 @@ extension CascadePresenter {
         var finalFrame = initialFrame
         finalFrame.origin.y = parameters.presentedTopMargin
         return finalFrame
+    }
+    
+    fileprivate func updateFromVCFrame(from: UIView) {
+        var frame = from.frame
+        frame.origin.y = parameters.presentingTopMargin
+        from.frame = frame
     }
 }
