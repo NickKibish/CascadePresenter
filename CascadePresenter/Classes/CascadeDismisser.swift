@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class CascadeDismisser: CascadeAbstractAnimator {
-    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+class CascadeDismisser: CascadeAbstractAnimator {
+    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let fromSnapshot = fromVC.view.snapshotView(afterScreenUpdates: true) else {

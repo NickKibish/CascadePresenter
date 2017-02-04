@@ -10,8 +10,6 @@ import UIKit
 import CascadePresenter
 
 class ViewController: UIViewController {
-    let presenter = CascadePresenter()
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.transitioningDelegate = self
     }
@@ -19,10 +17,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CascadePresenter() 
+        return Cascade.animator(for: .present)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CascadeDismisser()
+        return Cascade.animator(for: .dismiss)
     }
 }
