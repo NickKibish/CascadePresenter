@@ -8,18 +8,8 @@
 
 import UIKit
 
-public class CascadePresenter: NSObject {
-    /// Animation parameters. Default values are equal to `CascadeDefaultAnimationPrameters`
-    public var parameters: CascadeAnimationParameters = CascadeDefaultAnimationPrameters()
-}
-
-// MARK: - UIViewControllerAnimatedTransitioning
-extension CascadePresenter: UIViewControllerAnimatedTransitioning {
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return parameters.animationDuration
-    }
-    
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+class CascadePresenter: CascadeAbstractAnimator {
+    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let toSnapshot = toVC.view.snapshotView(afterScreenUpdates: true),
