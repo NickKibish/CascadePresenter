@@ -64,6 +64,14 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Default parameters
+
+![Default_](https://github.com/NickKibish/CascadePresenter/blob/master/Screenshots/Default.gif?raw=true)
+
+Custom parameters
+
+![Custom_](https://github.com/NickKibish/CascadePresenter/blob/master/Screenshots/with_params.gif?raw=true)
+
 ## Installation
 
 CascadePresenter is available through [CocoaPods](http://cocoapods.org). To install
@@ -75,7 +83,7 @@ pod "CascadePresenter"
 
 ## Author
 
-git, nick.kibish@gmail.com
+Nick Kibish, nick.kibish@gmail.com
 
 ## License
 
