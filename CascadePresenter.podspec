@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CascadePresenter'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Cascade animation for presentation and dismission view controllers'
 
   s.description      = <<-DESC
@@ -14,5 +14,10 @@ This library provides instances of UIViewControllerAnimatedTransitioning for ani
   s.source           = { :git => 'https://github.com/NickKibish/CascadePresenter.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'CascadePresenter/Classes/**/*'
+  s.source_files = 'CascadePresenter/Classes/**/*', 
+  'CascadePresenter/Protocols/**/*', 
+  'CascadePresenter/Enums/**/*', 
+  'CascadePresenter/Extensions/**/*',
+  'CascadePresenter/Structs/**/*'
+  
 end
