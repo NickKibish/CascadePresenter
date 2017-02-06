@@ -29,6 +29,7 @@ struct Params: CascadeAnimationParameters {
     var scale: CGFloat = 1
     var backgroundColor: UIColor = .green
     var cornerRadius: CGFloat = 15
+    var presentedInitialFrame: CGRect? = CGRect(x: 0, y: UIScreen.main.bounds.height - 32, width: UIScreen.main.bounds.width, height: 32)
 }
 
 // ...
