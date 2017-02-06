@@ -24,6 +24,8 @@ public protocol CascadeAnimationParameters {
     var backgroundColor: UIColor { get }
     /// Corner radius of the viewControllers.
     var cornerRadius: CGFloat { get }
+    /// Provide it if you want use specific start frame instead of frame in the bottom of the screen
+    var presentedInitialFrame: CGRect? { get }
 }
 
 internal extension CascadeAnimationParameters {

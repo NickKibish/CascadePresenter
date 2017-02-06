@@ -10,6 +10,8 @@ import Foundation
 
 /// Default Animation Parameters
 struct CascadeDefaultAnimationPrameters: CascadeAnimationParameters {
+    /// Provide it if you want use specific start frame instead of frame in the bottom of the screen
+    var presentedInitialFrame: CGRect? = nil 
     /// = 0.5
     var animationDuration: TimeInterval = 0.5
     /// = 0.7

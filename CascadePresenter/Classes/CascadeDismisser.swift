@@ -42,8 +42,13 @@ class CascadeDismisser: CascadeAbstractAnimator {
         toVC.view.round(corners: [.topLeft, .topRight], radius: 0)
         toVC.view.layer.cornerRadius = 0
         
-        var finishedFrame = fromSnapshot.frame
-        finishedFrame.origin.y = UIScreen.main.bounds.height
+        var finishedFrame: CGRect!
+        if let frame = parameters.presentedInitialFrame {
+            finishedFrame = frame
+        } else {
+            finishedFrame = fromSnapshot.frame
+            finishedFrame.origin.y = UIScreen.main.bounds.height
+        }
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { 
             fromSnapshot.frame = finishedFrame
