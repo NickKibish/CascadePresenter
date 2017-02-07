@@ -73,6 +73,10 @@ Custom parameters
 
 ![Custom_](https://github.com/NickKibish/CascadePresenter/blob/master/Screenshots/with_params.gif?raw=true)
 
+Custom initial frame
+
+![Custom_frame_](https://github.com/NickKibish/CascadePresenter/blob/master/Screenshots/custom_frame.gif?raw=true)
+
 ## Installation
 
 CascadePresenter is available through [CocoaPods](http://cocoapods.org). To install
